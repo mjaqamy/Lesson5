@@ -3,15 +3,18 @@
 //* Проверить валидна ли дата в переданном параметре
 
 const now: Date = new Date();
-
-const day = now.getDate().toString().padStart(2, "0");
-const month = (now.getMonth() + 1).toString().padStart(2, "0");
+function numberToStringFormatTwoDigits(format: number): string {
+  return format.toString().padStart(2, "0");
+}
+const day = numberToStringFormatTwoDigits(now.getDate());
+const month = numberToStringFormatTwoDigits(now.getMonth() + 1);
 const year = now.getFullYear();
 
-const hours = now.getHours().toString().padStart(2, "0");
-const minutes = now.getMinutes().toString().padStart(2, "0");
-const seconds = now.getSeconds().toString().padStart(2, "0");
+const hours = numberToStringFormatTwoDigits(now.getHours());
+const minutes = numberToStringFormatTwoDigits(now.getMinutes());
+const seconds = numberToStringFormatTwoDigits(now.getSeconds());
 
 const formattedDate = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 
 console.log(formattedDate);
+
