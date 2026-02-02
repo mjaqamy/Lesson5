@@ -2,16 +2,21 @@
 // Саму задачу обернуть в отдельную функцию getDate, которая принимает в качестве параметра произвольную дату в формате '2026-10-22T22:10:15'
 //* Проверить валидна ли дата в переданном параметре
 
-const now: Date = new Date();
+//const now: Date = new Date();
+function numberToStringFormatTwoDigits(format: number): string {
+  return format.toString().padStart(2, "0");
+}
 
-const day = now.getDate().toString().padStart(2, "0");
-const month = (now.getMonth() + 1).toString().padStart(2, "0");
-const year = now.getFullYear();
+function formatDateTime(newDateString: string): string {
+  const newFormatDate = new Date(newDateString);
+  const day = numberToStringFormatTwoDigits(newFormatDate.getDate());
+  const month = numberToStringFormatTwoDigits(newFormatDate.getMonth() + 1);
+  const year = newFormatDate.getFullYear();
 
-const hours = now.getHours().toString().padStart(2, "0");
-const minutes = now.getMinutes().toString().padStart(2, "0");
-const seconds = now.getSeconds().toString().padStart(2, "0");
+  const hours = numberToStringFormatTwoDigits(newFormatDate.getHours());
+  const minutes = numberToStringFormatTwoDigits(newFormatDate.getMinutes());
+  const seconds = numberToStringFormatTwoDigits(newFormatDate.getSeconds());
 
-const formattedDate = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
-
-console.log(formattedDate);
+  return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+}
+console.log(formatDateTime("2026-02-01T21:17:10"));
